@@ -2,4 +2,13 @@
 
 ## Description
 
+## Research plan
+For this analysis, we will utilize the data provided by the OPEC Annual Statistical Bulletin (ASB), a valuable resource that sheds light on aspects such as oil production, consumption, export-import dynamics, and pricing. Our approach includes a mix of time series analysis to track oil price trends, especially during significant global events, and comparative analysis using bar and column charts to contrast oil reserves, production, and exports among different countries or regions, particularly focusing on OPEC members.
+
+We plan to employ correlation analysis through scatter plots to explore relationships between variables like OPEC+ production decisions and oil prices. We'll also use box graphs to look at how oil prices change over time. Stacked area charts will help us visualize the cumulative changes in oil prices due to various factors over time, while heat maps will aid in analyzing complex, multi-dimensional data.
+
+Our methodology involves comprehensive data processing using statistical software like R and detailed statistical analysis including correlation, regression, and time-series analysis. We anticipate challenges such as data lag due to the annual nature of the ASB report and potential accuracy issues with data reported by member countries.
+
+The expected outcomes of this research include a multifaceted understanding of how global events, policy decisions, and market trends impact oil prices. We aim to provide insights into the relative influence of macro and micro-level factors on oil price fluctuations and develop predictive models for future oil price trends based on historical and current data.
+
 ## Missing value analysis
