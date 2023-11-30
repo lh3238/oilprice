@@ -2,6 +2,7 @@
 
 ## Description
 
+
 The data for the project can be drawn from the OPEC Annual Statistical Bulletin (ASB), available on the OPEC website. They are collected and compiled by OPEC, an intergovernmental organization of oil-exporting countries. The data in the ASB reflect the combined efforts of OPEC and its member countries in gathering and validating oil and energy-related data.
 
 The Summary section includes facts and figures about OPEC members and their crude oil production allocations. The Macro-economics section has data on population, GDP, exports, and imports of OPEC members. The Oil data: upstream section contains information on crude oil reserves, active rigs, wells completed, and oil production. The Oil data: downstream section contains refinery capacities, throughput, petroleum products output, and oil demand. The Oil trade section has data on crude oil and petroleum products exports and imports. The Oil transportation section contains information on average spot freight rates, dirty tanker spot freight rates, and clean tanker spot freight rates. The Oil prices section includes data on OPEC Reference Basket prices, various spot crude oil prices, average forward month prices, and petroleum product spot prices in major markets. The Taxes on oil section contains information on composite barrel components and tax ratios in OECD countries, along with household energy prices in Europe. The Natural gas data section provides details on natural gas reserves, production, exports, imports, and demand by country.
@@ -11,6 +12,17 @@ While the specific update frequency is not stated, the ASB is typically publishe
 One potential issue with the data could be the time lag in reporting and updating, given its annual publication. Also, the accuracy of the data depends on the reliability of the reporting by member countries.
 
 The data are available in various tables, which can be downloaded as a zip archive from the [OPEC ASB website](https://asb.opec.org/data/ASB_Data.php#:~:text=%23%20%E3%80%9010%E2%80%A0Data%20download%20,Dirty%20tanker%20spot%20freight%20rates). They can be imported by downloading the relevant tables in the provided format (likely Excel or CSV) and then processing them using R.
+
+
+## Research plan
+For this analysis, we will utilize the data provided by the OPEC Annual Statistical Bulletin (ASB), a valuable resource that sheds light on aspects such as oil production, consumption, export-import dynamics, and pricing. Our approach includes a mix of time series analysis to track oil price trends, especially during significant global events, and comparative analysis using bar and column charts to contrast oil reserves, production, and exports among different countries or regions, particularly focusing on OPEC members.
+
+We plan to employ correlation analysis through scatter plots to explore relationships between variables like OPEC+ production decisions and oil prices. We'll also use box graphs to look at how oil prices change over time. Stacked area charts will help us visualize the cumulative changes in oil prices due to various factors over time, while heat maps will aid in analyzing complex, multi-dimensional data.
+
+Our methodology involves comprehensive data processing using statistical software like R and detailed statistical analysis including correlation, regression, and time-series analysis. We anticipate challenges such as data lag due to the annual nature of the ASB report and potential accuracy issues with data reported by member countries.
+
+The expected outcomes of this research include a multifaceted understanding of how global events, policy decisions, and market trends impact oil prices. We aim to provide insights into the relative influence of macro and micro-level factors on oil price fluctuations and develop predictive models for future oil price trends based on historical and current data.
+
 
 ## Missing value analysis
 

@@ -177,7 +177,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">2.1</span> Description</a></li>
-  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</a></li>
+  <li><a href="#research-plan" id="toc-research-plan" class="nav-link" data-scroll-target="#research-plan"><span class="header-section-number">2.2</span> Research plan</a></li>
+  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/lh3238/oilprice/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/lh3238/oilprice/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -209,6 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>One potential issue with the data could be the time lag in reporting and updating, given its annual publication. Also, the accuracy of the data depends on the reliability of the reporting by member countries.</p>
 <p>The data are available in various tables, which can be downloaded as a zip archive from the <a href="https://asb.opec.org/data/ASB_Data.php#:~:text=%23%20%E3%80%9010%E2%80%A0Data%20download%20,Dirty%20tanker%20spot%20freight%20rates">OPEC ASB website</a>. They can be imported by downloading the relevant tables in the provided format (likely Excel or CSV) and then processing them using R.</p>
 </section>
+
 <section id="missing-value-analysis" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</h2>
 <div class="cell">
@@ -272,6 +274,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The heatmap shows missing data for world natural gas reserves across various countries and years. A clear pattern is visible where most countries and regions have continuous data with no missing values. In contrast, countries like Azerbaijan, Kazakhstan, Turkmenistan, Ukraine, and Uzbekistan, show a long horizontal band of missing data in the years 1960-1991, which can be explained by their historical context. These countries were part of the Soviet Union until its dissolution in 1991. During this time, natural gas reserves and other statistical data were reported at the union level rather than for individual republics. Therefore, specific data for these countries might not have been available or recorded in the dataset. After gaining independence post-1991, these countries started reporting their data separately, which is why the missing data is predominantly seen in the years prior to their independence.</p>
+
+<section id="research-plan" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="research-plan"><span class="header-section-number">2.2</span> Research plan</h2>
+<p>For this analysis, we will utilize the data provided by the OPEC Annual Statistical Bulletin (ASB), a valuable resource that sheds light on aspects such as oil production, consumption, export-import dynamics, and pricing. Our approach includes a mix of time series analysis to track oil price trends, especially during significant global events, and comparative analysis using bar and column charts to contrast oil reserves, production, and exports among different countries or regions, particularly focusing on OPEC members.</p>
+<p>We plan to employ correlation analysis through scatter plots to explore relationships between variables like OPEC+ production decisions and oil prices. We’ll also use box graphs to look at how oil prices change over time. Stacked area charts will help us visualize the cumulative changes in oil prices due to various factors over time, while heat maps will aid in analyzing complex, multi-dimensional data.</p>
+<p>Our methodology involves comprehensive data processing using statistical software like R and detailed statistical analysis including correlation, regression, and time-series analysis. We anticipate challenges such as data lag due to the annual nature of the ASB report and potential accuracy issues with data reported by member countries.</p>
+<p>The expected outcomes of this research include a multifaceted understanding of how global events, policy decisions, and market trends impact oil prices. We aim to provide insights into the relative influence of macro and micro-level factors on oil price fluctuations and develop predictive models for future oil price trends based on historical and current data.</p>
+</section>
+<section id="missing-value-analysis" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</h2>
+
 
 
 </section>
