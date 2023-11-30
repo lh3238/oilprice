@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "oil price analysis",
     "section": "",
-    "text": "1 Introduction"
+    "text": "1 Introduction\nRussia-Ukraine conflict, COVID-19 pandemic, OPEC+ changed their production decisions. In the past few years, many important events have happened, which leading to several big changes in oil prices. The dramatic increase in oil prices means not only makes our daily driving more expensive, but also increases the cost of producing the industry goods. This may leads to higher prices for industry products. As a result, the change of oil prices greatly affect our daily life. It is also a key to understanding the current state of the international market and global situation.\nThis has sparked our interest in the factors affecting oil prices. The factors may range from large-scale issues such as the oil reserves of OPEC members, significant political events, international oil demand, and the oil export volumes of major oil-exporting countries, to smaller-scale aspects like the average household gasoline expenditure in New York and the price trend of a particular industrial product.\nBy examining the relationship between these factors and oil prices, we can get a clearer understanding of the current international situation and make a general prediction about future oil price trends. This can help us to plan our daily expenses to cope with future changes in the international situation. This project concerns everyone’s daily life; Thus, its significance lies in the hope that not only we will benefit from this analysis, but also many others can gain insights from our analysis, thus facing future life with more ease."
   },
   {
     "objectID": "data.html#description",
@@ -14,10 +14,17 @@
     "text": "2.1 Description"
   },
   {
+    "objectID": "data.html#research-plan",
+    "href": "data.html#research-plan",
+    "title": "2  Data",
+    "section": "2.2 Research plan",
+    "text": "2.2 Research plan\nFor this analysis, we will utilize the data provided by the OPEC Annual Statistical Bulletin (ASB), a valuable resource that sheds light on aspects such as oil production, consumption, export-import dynamics, and pricing. Our approach includes a mix of time series analysis to track oil price trends, especially during significant global events, and comparative analysis using bar and column charts to contrast oil reserves, production, and exports among different countries or regions, particularly focusing on OPEC members.\nWe plan to employ correlation analysis through scatter plots to explore relationships between variables like OPEC+ production decisions and oil prices. We’ll also use box graphs to look at how oil prices change over time. Stacked area charts will help us visualize the cumulative changes in oil prices due to various factors over time, while heat maps will aid in analyzing complex, multi-dimensional data.\nOur methodology involves comprehensive data processing using statistical software like R and detailed statistical analysis including correlation, regression, and time-series analysis. We anticipate challenges such as data lag due to the annual nature of the ASB report and potential accuracy issues with data reported by member countries.\nThe expected outcomes of this research include a multifaceted understanding of how global events, policy decisions, and market trends impact oil prices. We aim to provide insights into the relative influence of macro and micro-level factors on oil price fluctuations and develop predictive models for future oil price trends based on historical and current data."
+  },
+  {
     "objectID": "data.html#missing-value-analysis",
     "href": "data.html#missing-value-analysis",
     "title": "2  Data",
-    "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis"
+    "section": "2.3 Missing value analysis",
+    "text": "2.3 Missing value analysis"
   }
 ]
