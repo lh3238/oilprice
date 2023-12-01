@@ -1,6 +1,6 @@
 # Data
 
-## Description
+## Technical Description
 
 The data for the project can be drawn from the OPEC Annual Statistical Bulletin (ASB), available on the OPEC website. They are collected and compiled by OPEC, an intergovernmental organization of oil-exporting countries. The data in the ASB reflect the combined efforts of OPEC and its member countries in gathering and validating oil and energy-related data.
 
