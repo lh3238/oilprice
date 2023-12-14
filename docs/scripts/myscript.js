@@ -1,8 +1,8 @@
 // add your JavaScript/D3 to this file
 // Set chart dimensions and margins
 const margin = { top: 30, right: 10, bottom: 50, left: 80 },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 800 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
 // Create SVG element
 const svg = d3.select("#chart").append("svg")
@@ -18,7 +18,7 @@ let regionsData;
 let years;
 
 // Load data
-d3.csv("https://raw.githubusercontent.com/lh3238/oilprice/tree/Lanyu-He/ASB2023_all/T52_pruned.csv").then(data => {
+d3.csv("https://raw.githubusercontent.com/lh3238/oilprice/main/ASB2023_all/T52_pruned.csv").then(data => {
     years = data.columns.slice(1);
     regionsData = data.reduce((accumulator, d) => {
         accumulator[d.Region] = years.map(year => ({
