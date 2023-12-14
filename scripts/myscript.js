@@ -17,13 +17,13 @@ const y = d3.scaleLinear().range([height, 0]);
 let regionsData;
 let years;
 
-// Load CSV data
-d3.csv("ASB2023_all/T52_pruned.csv").then(data => {
+// Load data
+d3.csv("https://raw.githubusercontent.com/lh3238/oilprice/tree/main/ASB2023_all/T52_pruned.csv").then(data => {
     years = data.columns.slice(1);
     regionsData = data.reduce((accumulator, d) => {
         accumulator[d.Region] = years.map(year => ({
             year: year,
-            value: +d[year].replace(/,/g, '') // Remove commas and convert to number
+            value: +d[year].replace(/,/g, '')
         }));
         return accumulator;
     }, {});
