@@ -4,10 +4,61 @@
   * {
     font-family: sans-serif;
   }
+  .bar {
+      fill: steelblue;
+  }
+  .bar:hover {
+      fill: orange;
+  }
+  .overlay-bar {
+      fill: lightgreen;
+  }
+  #plot {
+      display: flex;
+      align-items: flex-start;
+  }
+  #radio-wrapper {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+  }
 </style> 
 
 <div id="plot">
+  <div id="chart" style="flex-grow: 1;"> </div>
+  <div id="radio-wrapper"></div>
 </div>
+<p>We used a stacked bar chart to compare the relationship
+        between regional and organizational oil export volumes
+        and the total world oil export volume. Compared to using
+        simple bar or line charts, this approach not only informs
+        us about the historical oil export volumes of regions
+        and organizations but also shows the proportion of these
+        exports in the world's total oil exports. Understanding
+        both aspects is crucial for analyzing oil prices, as the
+        amount of oil exported determines the influence of a region
+        or organization on global oil prices. However, knowing the
+        export volume alone is insufficient. For instance, while
+        OPEC's oil exports in 2022 increased compared to 1980, its
+        share in the global oil export market has declined. By
+        comparing the export volumes of other regions, we found
+        that OECD's oil exports have been increasing annually.
+        This can be attributed to two main reasons. First, since
+        2010, the maturation of shale oil extraction technology
+        in the United States has turned it into a major oil exporter
+        , thereby encroaching on OPEC's market share. Second,
+        for political and security reasons, the OECD, led by the
+        United States, intentionally reduced its reliance on oil
+        imports from OPEC countries and gradually shifted to
+        purchasing oil from other regions. Interactive graphics
+        created with D3 make it easier and clearer for us to
+        identify these trends, thereby assisting us in conducting
+        a more objective and accurate analysis of other aspects.</p>
 
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://d3js.org/d3.v7.js"></script>
 <script src="scripts/myscript.js"></script>
