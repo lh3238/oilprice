@@ -27,9 +27,6 @@
       max-width: 100%;
       height: auto;
   }
-  #exp {
-      margin-top: 20px;
-  }
 </style> 
 
 <div id="plot">
