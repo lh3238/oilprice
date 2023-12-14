@@ -27,13 +27,16 @@
       max-width: 100%;
       height: auto;
   }
+  #exp {
+      margin-top: 20px;
+  }
 </style> 
 
 <div id="plot">
   <div id="chart" style="flex-grow: 1;"> </div>
   <div id="radio-wrapper"></div>
 </div>
-<p>We used a stacked bar chart to compare the relationship
+<p id="exp">We used a stacked bar chart to compare the relationship
         between regional and organizational oil export volumes
         and the total world oil export volume. Compared to using
         simple bar or line charts, this approach not only informs
