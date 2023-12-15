@@ -1,5 +1,34 @@
 # Results
 
+
+## Ratio of Regional Oil Exports to Total World Export
+
+```{r, warning=FALSE, message=FALSE}
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+data <- read_csv("ASB2023_all/T52_pruned.csv")
+data[,-1] <- lapply(data[,-1], function(x) as.numeric(gsub(",", "", x)))
+total_world_data <- filter(data, Region == "Total_world")
+data <- filter(data, Region != "Total_world")
+ratios <- data
+for (year in names(data)[-1]) {
+  ratios[[year]] <- data[[year]] / total_world_data[[year]]
+}
+ratios_long <- pivot_longer(ratios, cols = -Region, names_to = "Year", values_to = "Ratio")
+ggplot(ratios_long, aes(x = Year, y = Ratio, group = Region, color = Region)) +
+  geom_line() +
+  theme_minimal() +
+  labs(title = "Ratio of Regional Oil Exports to Total World Export Over Time",
+       x = "Year",
+       y = "Ratio to Total World Export") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+We used a stacked bar chart to compare the relationship between regional and organizational oil export volumes and the total world oil export volume. Compared to using simple bar or line charts, this approach not only informs us about the historical oil export volumes of regions and organizations but also shows the proportion of these exports in the world's total oil exports. Understanding both aspects is crucial for analyzing oil prices, as the amount of oil exported determines the influence of a region or organization on global oil prices. However, knowing the export volume alone is insufficient. For instance, while OPEC's oil exports in 2022 increased compared to 1980, its share in the global oil export market has declined. By comparing the export volumes of other regions, we found that OECD's oil exports have been increasing annually. This can be attributed to two main reasons. First, since 2010, the maturation of shale oil extraction technology in the United States has turned it into a major oil exporter, thereby encroaching on OPEC's market share. Second, for political and security reasons, the OECD, led by the United States, intentionally reduced its reliance on oil imports from OPEC countries and gradually shifted to purchasing oil from other regions. Interactive graphics created with D3 make it easier and clearer for us to identify these trends, thereby assisting us in conducting a more objective and accurate analysis of other aspects.
+
 ## Time Series Analysis
 
 ```{r, warning=FALSE, message=FALSE}
@@ -141,6 +170,65 @@ ggpairs(tbl3[, c("Oil_Price", "Real_GDP_Growth_Rate", "Petroleum_Exports", "Curr
 
 The matrix shows a strikingly high correlation of 0.989 between oil prices and petroleum exports, denoted by a strong upward trend in their scatter plot. This is expected, as higher oil prices would naturally boost the revenue from exports of petroleum, assuming export quantities remain relatively stable. The correlation between oil prices and current account balances is also robust at 0.872, indicating that the current account balances of OPEC members are strongly associated with oil prices. Higher oil prices typically translate into greater export revenues, contributing positively to the current account. The real GDP growth rate shows a weak correlation with oil prices (0.214). The low value suggests that the economic growth rates of OPEC members, as measured by real GDP growth, may not have a strong direct linear relationship with oil prices. In essence, the scatter plot matrix highlights that oil prices have a substantial and statistically significant correlation with petroleum exports and current account balances, which are critical economic parameters for oil-exporting countries. The real GDP growth rate's connection to oil prices appears to be much less pronounced.
 
+
+## Multivariate Analysis of the Impact of Production Factors
+
+```{r, warning=FALSE, message=FALSE}
+total_world_production <- read_excel("ASB2023_all/T35.xlsx", na = "na", skip = 2)
+total_world_production <- total_world_production[1:74, ]
+colnames(total_world_production)[1] <- "Region"
+total_world_production <- filter(total_world_production, Region == "Total World")
+
+selected_columns <- c("Region", as.character(1983:2022))
+total_world_production <- total_world_production[, selected_columns, drop = FALSE]
+
+total_world_import <- read_excel("ASB2023_all/T56.xlsx", na = "na", skip = 2)
+total_world_import <- total_world_import[1:74, ]
+colnames(total_world_import)[1] <- "Region"
+total_world_import <- filter(total_world_import, Region == "Total world")
+selected_columns <- c("Region", as.character(1983:2022))
+total_world_import <- total_world_import[, selected_columns, drop = FALSE]
+
+
+oil_price <- read_excel("ASB2023_all/T72.xlsx", na = "na", skip = 50)
+oil_price <- oil_price[1:30, ]
+colnames(oil_price)[1] <- "Region"
+oil_price <- filter(oil_price, Region == "OPEC - ORB")
+
+
+
+import_data <- total_world_import[2:40] 
+price_data <- oil_price[2:40]   
+production_data <- total_world_production[2:40] 
+
+prod_minus_import_data <- production_data - import_data
+
+combined_data <- data.frame(
+  Oil_Price = as.numeric(price_data),
+  World_Production = as.numeric(production_data),
+  World_Import = as.numeric(import_data),
+  Production_minus_Import = as.numeric(prod_minus_import_data)
+)
+cor_matrix <- cor(combined_data, use = "complete.obs")
+
+library(ggplot2)
+library(reshape2)
+
+cor_melted <- melt(cor_matrix)
+
+ggplot(data = cor_melted, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1)) +
+  theme_minimal() +
+  xlab("Variables") +
+  ylab("Variables") +
+  ggtitle("Correlations between Import production and Oil Price")
+
+```
+Note: The sum of all line weights in the graph may exceed 1, as there might be overlaps between the organizations and regions listed. For example, OPEC may include most countries in the Middle East. We believe that countries with a larger relative share of crude oil exports in the world's total exports have a greater impact on global oil prices. To understand the share of crude oil exports from various regions in the world's total exports, we created this line graph, which includes the proportion of crude oil exports from major oil-exporting countries over the years. We found that OPEC has always been the largest oil-exporting organization, but its share in the world's oil exports has been declining in recent years. On the other hand, the share of OECD's oil exports in the world's total exports has been increasing. This tells us that when analyzing data from 20 years ago, the focus should be on OPEC, but for more recent data, more attention may need to be given to emerging oil-exporting organizations like the OECD.
+
+
 ## Multivariate Analysis of the Impact of Production Factors
 
 ```{r, warning=FALSE, message=FALSE}
@@ -206,3 +294,56 @@ vcd::mosaic(Price_Category ~ Tax_Category + GDP_Category, data = t2,
             main = "Impact of Tax Policies and GDP Growth on Oil Price Segments")
 ```
 It appears that with tax cuts, oil prices tend to be predominantly in the Medium and High price categories. This representation suggests that tax cuts might be associated with a range of price levels but are less often associated with the lowest oil price category. For tax increases, the plot shows a more significant presence in the High oil price category across Low Growth and Moderate Growth categories. This could imply that tax increases aren't necessarily more likely when oil prices and GDP growth are higher, possibly as a fiscal response to additional revenue from higher oil prices. In the Low Growth GDP category, there's a substantial area in both the Medium and Low oil price categories, indicating that low GDP growth coincides with low oil prices in this dataset. For Moderate Growth, the distribution across oil price categories is relatively even, with High oil prices being slightly more prevalent. Interestingly, in the High Growth GDP category, the plot suggests a balanced distribution across the Medium and High oil price categories, with a smaller presence in the Low category. This suggests that higher economic growth may correlate with higher oil prices.
+
+
+## Correlations between Dirty Tanker Price and Oil Price
+
+
+```{r, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(reshape2)
+oil_price <- read_excel("ASB2023_all/T72.xlsx", na = "na", skip = 50)
+oil_price <- oil_price[1:30, ]
+colnames(oil_price)[1] <- "Region"
+oil_price <- filter(oil_price, Region == "OPEC - ORB")
+selected_columns <- c("Region", as.character(2011:2022))
+oil_price <- oil_price[, selected_columns, drop = FALSE]
+dirty_tanker_price <- read_excel("ASB2023_all/T62.xlsx", na = "na", skip = 3)
+dirty_tanker_price <- dirty_tanker_price[1:8, ]
+colnames(dirty_tanker_price)[1] <- "Region"
+columns_to_remove <- seq(2, 24, by = 2)
+dirty_tanker_price <- dirty_tanker_price[, -columns_to_remove, drop = FALSE]
+dirty_tanker_price <- dirty_tanker_price[-2, ]
+new_column_names <- c("Region", as.character(2011:2022))
+colnames(dirty_tanker_price) <- new_column_names
+combined_df <- rbind(dirty_tanker_price, oil_price)
+rownames(combined_df) <- combined_df$Region
+region_names <- combined_df$Region
+combined_df$Region <- NULL
+transposed_df <- t(combined_df)
+transposed_df <- as.data.frame(transposed_df)
+colnames(transposed_df) <- region_names
+rownames(transposed_df) <- colnames(combined_df)
+correlation_matrix <- cor(transposed_df)
+cor_matrix <- cor(transposed_df)
+melted_cor_matrix <- melt(cor_matrix)
+ggplot(data = melted_cor_matrix, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  geom_text(aes(label = round(value, 2)), size = 4, vjust = 1) + 
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson\nCorrelation") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, size = 12, hjust = 1),
+        axis.text.y = element_text(size = 12)) +
+  labs(x = '', y = '', title = 'Correlations between Dirty Tanker Price and Oil Price')
+```
+We've explored some interesting findings by creating a correlation matrix heatmap of dirty tanker prices and oil prices across different global regions. As anticipated, there is a positive correlation between oil prices and dirty tanker prices in most areas. Interestingly, the Middle East region exhibits a negative correlation between dirty tanker prices and oil prices. From our previous results, we know that there is a strong positive correlation between oil prices and export volumes. Therefore, when oil prices rise, export volumes also tend to increase, boosting the global demand for oil. This allows the Middle East, as the world's leading oil-exporting region, to offset the increased transportation costs caused by the rise in oil prices
+
+
+
+
+
+
+
+
