@@ -1,1 +1,10 @@
 # Conclusion
+
+The investigation into the determinants of oil prices has revealed complex interactions between global events, policy shifts, and market trends. The exploration highlights that while OPEC decisions and geopolitical crises strongly sway oil prices, the intricate interplay with market trends is also crucial. The interactive graphs demonstrate that while OPEC's export volume grew, its global market share decreased due to increased OECD exports, notably from the U.S. due to advanced shale oil technology and a strategic shift away from OPEC oil for security reasons. 
+
+The project faces limitations such as data scope and the complexity of oil markets, suggesting future directions could include broader datasets and advanced predictive analytics.
+
+Our findings underscore the intricate nexus between energy markets and the broader socio-economic landscape, highlighting the importance of strategic policy and investment planning for future price shifts. This study provides valuable insights for stakeholders and individuals to navigate the ever-changing dynamics of oil prices.
+
+
+
